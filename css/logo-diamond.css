@@ -1,0 +1,131 @@
+/* CSS pour contrôler cadre et image indépendamment */
+.logosite {
+    --image-rotation: 0deg;   /* Angle de l'image à l'intérieur */
+    transform: rotate(var(--image-rotation)) !important;
+    /* Cadre losange par défaut (45°) */
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important;
+}
+
+/* Classes pour différentes orientations du CADRE */
+.logosite.cadre-carre { 
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%) !important; 
+}
+.logosite.cadre-losange { 
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%) !important; 
+}
+.logosite.cadre-losange-plat { 
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%) !important; 
+}
+
+/* Classes pour différentes orientations de l'IMAGE */
+.logosite.image-0 { --image-rotation: 0deg; }
+.logosite.image-15 { --image-rotation: 15deg; }
+.logosite.image-30 { --image-rotation: 30deg; }
+.logosite.image-45 { --image-rotation: 45deg; }
+.logosite.image-60 { --image-rotation: 60deg; }
+.logosite.image-90 { --image-rotation: 90deg; }
+.logosite.image-moins15 { --image-rotation: -15deg; }
+.logosite.image-moins30 { --image-rotation: -30deg; }
+.logosite.image-moins45 { --image-rotation: -45deg; }
+
+/* Les media queries héritent maintenant du système de classes */
+
+/* CSS pour la mosaïque d'images */
+.container-with-mosaic {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.text-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.photo-mosaic {
+    flex: 0 0 40%;
+    max-width: 40%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+    height: 500px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.mosaic-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mosaic-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.mosaic-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Différentes tailles pour créer un effet dynamique */
+.mosaic-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.mosaic-item.tall {
+    grid-row: span 2;
+}
+
+.mosaic-item.wide {
+    grid-column: span 2;
+}
+
+/* Adaptation mobile */
+@media (max-width: 992px) {
+    .container-with-mosaic {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .photo-mosaic {
+        max-width: 100%;
+        height: 300px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+    
+    .mosaic-item.large {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 767px) {
+    .photo-mosaic {
+        height: 250px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+    
+    .mosaic-item.tall {
+        grid-row: span 1;
+    }
+    
+    .mosaic-item.wide {
+        grid-column: span 1;
+    }
+} 
