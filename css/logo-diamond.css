@@ -52,7 +52,7 @@
     flex-direction: column;
     gap: 12px;
     min-height: 300px;
-    max-height: 500px;
+    max-height: none;
     height: auto;
     border-radius: 12px;
     overflow: hidden;
