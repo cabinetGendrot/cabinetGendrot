@@ -49,7 +49,8 @@
     max-width: 35%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 1fr;
+    grid-auto-rows: auto;
+    align-content: start;
     gap: 12px;
     align-self: stretch;
     border-radius: 12px;
@@ -99,7 +100,8 @@
         flex: 1;
         max-width: 100%;
         grid-template-columns: 1fr 1fr;
-        grid-auto-rows: 1fr;
+        grid-auto-rows: auto;
+        align-content: start;
         min-height: 250px;
         gap: 10px;
         padding: 10px;
@@ -131,9 +133,8 @@
 
 /* Bannière info */
 .info-banner {
-    background: #e8f4f4;
-    border-bottom: 2px solid #148180;
-    padding: 10px 0;
+    background: #148180;
+    padding: 12px 0;
     text-align: center;
 }
 .info-banner .container {
@@ -144,11 +145,11 @@
     flex-wrap: wrap;
 }
 .info-banner i {
-    color: #148180;
+    color: #fff;
     font-size: 18px;
 }
 .info-banner span {
-    color: #00344b;
+    color: #fff;
     font-size: 15px;
     font-style: italic;
 } 
