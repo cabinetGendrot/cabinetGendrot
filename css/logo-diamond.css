@@ -49,7 +49,7 @@
     max-width: 35%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: auto;
+    grid-template-rows: auto 1fr;
     align-content: start;
     gap: 12px;
     align-self: stretch;
@@ -100,7 +100,7 @@
         flex: 1;
         max-width: 100%;
         grid-template-columns: 1fr 1fr;
-        grid-auto-rows: auto;
+        grid-template-rows: auto 1fr;
         align-content: start;
         min-height: 250px;
         gap: 10px;
@@ -116,6 +116,7 @@
 @media (max-width: 767px) {
     .photo-mosaic {
         grid-template-columns: 1fr;
+        grid-template-rows: auto;
         grid-auto-rows: auto;
         min-height: auto;
         gap: 8px;
@@ -133,9 +134,16 @@
 
 /* Bannière info */
 .info-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: #148180;
-    padding: 12px 0;
+    color: #fff;
+    padding: 10px 0;
     text-align: center;
+    z-index: 9999;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 .info-banner .container {
     display: flex;
@@ -143,6 +151,7 @@
     justify-content: center;
     gap: 10px;
     flex-wrap: wrap;
+    position: relative;
 }
 .info-banner i {
     color: #fff;
@@ -152,4 +161,21 @@
     color: #fff;
     font-size: 15px;
     font-style: italic;
+}
+.info-banner .close-banner {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+    line-height: 1;
+    padding: 0 8px;
+}
+.info-banner .close-banner:hover {
+    opacity: 1;
 } 
